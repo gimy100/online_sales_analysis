@@ -19,3 +19,15 @@ manager.show_all_products()
 
 # Afișează valoarea totală a inventarului
 manager.total_inventory_value()
+
+# Șterge un produs existent
+print("\n=== Ștergere produs: Mouse ===")
+manager.remove_product("Mouse")
+
+# Afișează lista după ștergere
+print("\n=== Lista produse după ștergere ===")
+manager.show_all_products()
+
+# Încearcă să ștergi un produs care nu există
+print("\n=== Încercare ștergere produs inexistent: Telefon ===")
+manager.remove_product("Monitor")
