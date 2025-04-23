@@ -1,33 +1,28 @@
-from product import Product
+# main.py
+import random
 from product_manager import ProductManager
+from cart import Cart
+from product import Product
 
-# Creează instanța ProductManager
-manager = ProductManager()
+def main():
+    product_manager = ProductManager()
+    product_manager.add_product(Product("Laptop", 1200.00, 10))
+    product_manager.add_product(Product("Mouse", 25.50, 50))
+    product_manager.add_product(Product("Tastatură", 75.00, 30))
+    product_manager.add_product(Product("Monitor", 300.00, 15))
+    product_manager.add_product(Product("Căști", 90.75, 40))
 
-# Adaugă produse arbitrare
-produs1 = Product("Laptop", 3500, 5)
-produs2 = Product("Mouse", 100, 20)
-produs3 = Product("Monitor", 700, 10)
+    cart = Cart()
 
-manager.add_product(produs1)
-manager.add_product(produs2)
-manager.add_product(produs3)
+    available_products = product_manager.products
+    if len(available_products) >= 3:
+        random_products = random.sample(available_products, 3)
+        for product in random_products:
+            cart.add_item(product)
+    else:
+        print("Nu sunt suficiente produse disponibile pentru a adăuga 3 în coș.")
 
-# Afișează toate produsele
-print("=== Lista produse ===")
-manager.show_all_products()
+    cart.display_cart()
 
-# Afișează valoarea totală a inventarului
-manager.total_inventory_value()
-
-# Șterge un produs existent
-print("\n=== Ștergere produs: Mouse ===")
-manager.remove_product("Mouse")
-
-# Afișează lista după ștergere
-print("\n=== Lista produse după ștergere ===")
-manager.show_all_products()
-
-# Încearcă să ștergi un produs care nu există
-print("\n=== Încercare ștergere produs inexistent: Telefon ===")
-manager.remove_product("Monitor")
+if __name__ == "__main__":
+    main()
