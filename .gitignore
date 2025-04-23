@@ -1,1 +1,7 @@
 __pycache__/
+config.json
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
